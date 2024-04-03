@@ -33,17 +33,21 @@ def test_token_correctness(init_test_client) -> None:
     response = init_test_client.post(
         "/predictions",
         headers={"Authorization": "Bearer 00000"},
-        json={"test": 'hi my name is slim shady'}
+        json={"text": 'hi my name is slim shady'}
     )
+    json_response = {"IE": 1.0,
+                     "NS": 1.0,
+                     "TF": 0.0,
+                     "JP": 0.0
+                     }
     assert response.status_code == 200
-    assert "mpg" in response.json()
 
 
 def test_token_not_correctness(init_test_client):
     response = init_test_client.post(
         "/predictions",
         headers={"Authorization": "Bearer kedjkj"},
-        json={"test": 'hi my name is slim shady'}
+        json={"text": 'hi my name is slim shady'}
     )
     assert response.status_code == 401
     assert response.json() == {
@@ -54,7 +58,7 @@ def test_token_not_correctness(init_test_client):
 def test_token_absent(init_test_client):
     response = init_test_client.post(
         "/predictions",
-        json={"test": 'hi my name is slim shady'}
+        json={"text": 'hi my name is slim shady'}
     )
     assert response.status_code == 401
     assert response.json() == {
@@ -66,7 +70,7 @@ def test_inference(init_test_client):
     response = init_test_client.post(
         "/predictions",
         headers={"Authorization": "Bearer 00000"},
-        json={"test": 'hi my name is slim shady'}
+        json={"text": 'hi my name is slim shady'}
     )
     assert response.status_code == 200
     assert response.json()["IE"] == 1.0
