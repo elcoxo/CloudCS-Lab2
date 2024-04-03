@@ -7,12 +7,11 @@ import nltk
 from nltk.stem.porter import *
 
 
-
 def make_inference(in_model: Pipeline, in_data: dict) -> dict[str, list]:
     """Return the result of predictions for in_data using in_model."""
     in_data_tfidf = in_model[1].transform(in_data)
-    result={}
-    
+    result = {}
+
     for target_variable, model in in_model[0].items():
         preds = model.predict(in_data_tfidf)
         result[target_variable] = preds

@@ -27,10 +27,10 @@ def test_make_inference(monkeypatch, create_data):
 
     result = make_inference(in_model, create_data)
     assert result == {"IE": 1.0,
-                "NS": 1.0,
-                "TF": 0.0,
-                "JP": 0.0
-                }
+                      "NS": 1.0,
+                      "TF": 0.0,
+                      "JP": 0.0
+                      }
 
 
 @pytest.fixture()

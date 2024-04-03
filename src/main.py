@@ -50,4 +50,5 @@ def healthcheck() -> dict[str, str]:
 @app.post("/predictions")
 async def predictions(instance: Instance,
                       token: str = Depends(check_token)) -> dict[str, float]:
-    return make_inference(load_model("../models/pipeline_personality.pkl"), instance.dict())
+    return make_inference(load_model("../models/pipeline_personality.pkl"),
+                          instance.dict())
