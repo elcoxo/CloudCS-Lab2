@@ -34,7 +34,7 @@ services:
       context: .
       dockerfile: docker/Dockerfile
     environment:
-      MODEL_PATH: "/models/pipeline.pkl"
+      MODEL_PATH: "/models/pipeline_personality.pkl"
       KEYCLOAK_URL: $KEYCLOAK_URL
       CLIENT_ID: $CLIENT_ID
       CLIENT_SECRET: $CLIENT_SECRET
