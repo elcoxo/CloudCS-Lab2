@@ -29,7 +29,6 @@ services:
       postgres:
         condition: service_healthy
   inference:
-    image: kpdvstu/cloud-cs:inference-service
     build:
       context: .
       dockerfile: docker/Dockerfile
